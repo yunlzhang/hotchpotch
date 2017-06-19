@@ -33,7 +33,7 @@
         if(!str || !color || !html){
             throw new Error('str、color、html can\'t be vacant');
         }
-        html = html.replace(/<\/?[^>]*>/g,'');
+        html = html.replace(/<\/?[^>]*>/g,'');//替换所有的html标签
         var reg = new RegExp(str,'g');
         return html.replace(reg,'<span style="color:'+color+'">'+str+'</span>');
     }
