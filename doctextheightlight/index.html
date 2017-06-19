@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本高亮</title>
+</head>
+<body>
+    <div class="textarea">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque nam hic, a beatae animi similique natus molestias, assumenda libero ipsam provident vitae vel, laudantium veritatis, dolor facere repellat! Numquam consequuntur sint porro ex, omnis molestias sunt minima voluptates quo a eveniet commodi illum nihil quisquam harum obcaecati quos! Dolor, modi!
+
+
+    </div>
+    <input type="text" id="text">
+    <input type="color" name="" id="color">
+    <input type="button" value="高亮显示">
+<script type="text/javascript">
+    var $ = function(str){
+        if(str.match('#')){
+            return document.querySelector(str);
+        }
+        return document.querySelectorAll(str);
+    };
+    var txt,color,html;
+    $('input[type=button')[0].onclick = function(){
+        txt = $('#text').value;
+        color = $('#color').value;
+        html = $('.textarea')[0].innerHTML
+        $('.textarea')[0].innerHTML = htmlHeightLight(txt,color,html)
+    }
+    function htmlHeightLight(str,color,html){
+        if(!str || !color || !html){
+            throw new Error('str、color、html can\'t be vacant');
+        }
+        html = html.replace(/<\/?[^>]*>/g,'');
+        var reg = new RegExp(str,'g');
+        return html.replace(reg,'<span style="color:'+color+'">'+str+'</span>');
+    }
+</script>
+</body>
+</html>

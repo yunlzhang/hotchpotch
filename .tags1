@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+html	/Users/yunlongzhang/desktop/regExp/index.html	/^<html lang="en">$/;"	function	line:2
+head	/Users/yunlongzhang/desktop/regExp/index.html	/^<head>$/;"	function	line:3
+meta	/Users/yunlongzhang/desktop/regExp/index.html	/^  <meta charset="UTF-8">$/;"	function	line:4
+meta	/Users/yunlongzhang/desktop/regExp/index.html	/^  <meta name="viewport" content="width=device-width, initial-scale=1.0">$/;"	function	line:5
+meta	/Users/yunlongzhang/desktop/regExp/index.html	/^  <meta http-equiv="X-UA-Compatible" content="ie=edge">$/;"	function	line:6
+title	/Users/yunlongzhang/desktop/regExp/index.html	/^  <title>regExp learning<\/title>$/;"	function	line:7
+body	/Users/yunlongzhang/desktop/regExp/index.html	/^<body>$/;"	function	line:9
+div	/Users/yunlongzhang/desktop/regExp/index.html	/^    <div><\/div>$/;"	function	line:10
+div	/Users/yunlongzhang/desktop/regExp/index.html	/^    <div>$/;"	function	line:11
+div	/Users/yunlongzhang/desktop/regExp/index.html	/^        <div class="12333"><\/div>$/;"	function	line:12
+script	/Users/yunlongzhang/desktop/regExp/index.html	/^    <script>$/;"	function	line:14
