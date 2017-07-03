@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .videobox{
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+
+        }
+        .videobox video{
+            width: 100%;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            cursor:pointer;
+            background: rgba(0,0,0,.5)
+        }
+        .col{
+            width: 80%;
+            margin:20px auto ;
+        }
+        .col2,.col3{
+            height:8px;
+        }
+        .col2 .progress,.col3 .columns{
+            width: 100%;
+            height: 100%;
+            background: #00d6a6;
+        }
+        .col2 .real,.col3 .real{
+            height: 100%;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="videobox">
+        <div class="bg">
+            <div class="play"></div>
+            <div class="pause"></div>
+        </div>
+        <video src="" autoplay controls>
+            <p>你的浏览器不支持html5</p>
+        </video>
+        <!--播放器控制 -->
+        <div class="col col1">
+            <span class="play">play</span>
+            <span class="pause">pause</span>
+        </div>
+        <div class="col col2">
+            <div class="progress">
+                <div class="real"></div>
+                <div class="time"><span class="current"></span>/<span class="total"></span></div>
+            </div>
+        </div>
+        <div class="col col3">
+            <div class="columns">
+                <div class="real"></div>
+                <div class="time"><span class="current"></span>/<span class="total"></span></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var video = document.querySelectorAll('video');
+        var bg = document.querySelectorAll('.bg');
+        bg[0].onclick = function(){
+            this.style.display = "none";
+            var video = this.parentNode.querySelectorAll('video')[0];
+            video.src="../r0520rat0j5.p712.1.mp4"
+            console.log(document.querySelectorAll('.play'))
+            document.querySelectorAll('.play')[1].onclick = function(){
+                video.play()
+            }
+            document.querySelectorAll('.pause')[1].onclick = function(){
+                video.pause()
+            }
+            var duration = 0;
+            video.addEventListener('loadedmetadata',function(){
+                console.log(video.duration)
+                duration = video.duration;
+                document.querySelectorAll('.time span')[1].innerHTML = video.duration
+            })
+            video.addEventListener('timeupdate',function(){
+                document.querySelectorAll('.time span')[0].innerHTML = video.currentTime
+                console.log(video.currentTime)
+                document.querySelectorAll('.real')[0].style.width = (video.currentTime/duration * 100) + '%'
+            })
+        }
+    </script>
+</body>
+</html>
