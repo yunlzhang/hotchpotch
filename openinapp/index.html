@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * open in app(h5页面打开app)
+         */
+         var isAndroid = !!navigator.userAgent.match(/android/ig),
+             isIos = !!navigator.userAgent.match(/iphone|ipod/ig),
+             isIpad = !!navigator.userAgent.match(/ipad/ig),
+             isIos9 = !!navigator.userAgent.match(/OS 9/ig),
+             isYx = !!navigator.userAgent.match(/MailMaster_Android/i),
+             isNewsapp = !!navigator.userAgent.match(/newsapp/i),
+             isWeixin = (/MicroMessenger/ig).test(navigator.userAgent),
+             isQQ = (/qq/ig).test(navigator.userAgent),
+             url = 'newsapp://',
+             iframe = document.getElementById('iframe');
+    </script>
+</body>
+</html>

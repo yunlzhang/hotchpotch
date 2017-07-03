@@ -134,6 +134,10 @@ return $(this).each(function() {
 };
 $(function(){
     $('.box').scrollUnique()
+    var $a  = $('<a href="https://www.baidu.com" target="_blank"></a>');
+    $('body').append($a);
+    $a[0].setAttribute("onclick",'');
+    $a[0].click("return false");
 })
 </script>
 </body>
