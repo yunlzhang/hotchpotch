@@ -1,109 +1,193 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Textarea自适应高度</title>
-
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;">
-	<link rel="stylesheet" type="text/css" href="">
+	<title>摩点网</title>
+	<meta name="keywords" content="游戏、众筹、投资、预售" />
+	<meta name="description" content="摩点网" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+		.project-Details-cont img {
+			max-width: 100%;
+		}
 
-	<style type="text/css">
-	body {background-color:#fff;}
-	textarea {border:1px solid #aaa;}
+		.project-Details-cont {
+			font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+			font-size: 16px;
+			line-height: 1.75;
+		}
+
+		.project-Details-cont a {
+			color: #576B95;
+		}
+
+		.project-Details-cont h1 {
+			font-size: 34px;
+			/*margin-bottom:1.34em;*/
+		}
+
+		.project-Details-cont video {
+			width: 100%;
+		}
+
+		.project-Details-cont h2 {
+			font-size: 24px;
+			/*margin-bottom:1.66em;*/
+		}
+
+		.project-Details-cont h3 {
+			font-size: 18px;
+			/*margin-bottom:2em;*/
+		}
+
+		.project-Details-cont h4 {
+			font-size: 16px;
+			/*margin-bottom: .8em;*/
+		}
+
+		.project-Details-cont h5,
+		.project-Details-cont h6 {
+			font-weight: 700;
+		}
+		/** * Address styling not present in IE 8/9,Safari 5,and Chrome. */
+
+		abbr[title] {
+			border-bottom: 1px dotted;
+		}
+		/** * Address style set to `bolder` in Firefox 4+,Safari 5,and Chrome. */
+
+		.project-Details-cont b,
+		.project-Details-cont strong {
+			font-weight: 700;
+		}
+
+		.project-Details-cont em {
+			font-style: italic;
+		}
+
+		.project-Details-cont blockquote {
+			border-left: 6px solid #ddd;
+			padding: 5px 0 5px 10px;
+			margin: 15px 0 15px 15px;
+		}
+
+		.project-Details-cont table td {
+			padding: 5px 10px;
+			border: 1px solid #DDD;
+		}
+
+		.project-Details-cont li {
+			list-style: inherit;
+		}
+
+		.project-Details-cont .list-paddingleft-2 {
+			padding-left: 30px;
+		}
 	</style>
-
-	<script type="text/javascript">
-	/**
-	 * 让文本域根据输入的内容自适应高度
-	 * 使用方式：
-	 * $('your textarea').TextareaAutoHeight();
-	 * $('your textarea').TextareaAutoHeight(300);
-	 *
-	 * @param [maxHeight] 自动增长到的最大高度值，如果不设置，则无限增长
-	 */
-	$.fn.TextareaAutoHeight = function (maxHeight) {
-		var extra = 0;
-		var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
-		isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera');
-
-		return this.each(function () {
-			if (!/[object HTMLTextAreaElement]/gi.test(Object.prototype.toString.call(this))) {
-				return;
-			}
-
-			var elem = this,
-			$elem = $(this);
-			var _maxHeight = maxHeight || $elem.attr('data-maxheight');
-			var minHeight = $elem.height();
-
-			this.style.maxHeight = this.style.resize = 'none';
-
-			var change = function () {
-				var scrollTop,
-				height,
-				padding = 0,
-				style = elem.style;
-				if (elem._length === elem.value.length)
-					return;
-				elem._length = elem.value.length;
-
-				if (!isFirefox && !isOpera) {
-					padding = parseInt($elem.css('paddingTop')) + parseInt($elem.css('paddingBottom'));
-				};
-
-				scrollTop = Math.max(document.documentElement.scrollTop || document.body.scrollTop);
-
-				style.height = minHeight + 'px';
-
-				if (elem.scrollHeight > minHeight) {
-					if (_maxHeight && elem.scrollHeight > _maxHeight) {
-						height = _maxHeight - padding;
-						style.overflowY = 'auto';
-					} else {
-						height = elem.scrollHeight - padding;
-						style.overflowY = 'hidden';
-					};
-
-					style.height = height + extra + 'px';
-					scrollTop += parseInt(style.height) - elem.currHeight;
-					document.body.scrollTop = scrollTop;
-					document.documentElement.scrollTop = scrollTop;
-					elem.currHeight = parseInt(style.height);
-				};
-			};
-
-			$elem.bind('propertychange', change).bind('input', change).bind('focus', change);
-			change();
-		});
-	};
-	</script>
 </head>
 
 <body>
-
-  <h2><span>Textarea自适应高度</span></h2>
-	<p>当文本域内容很多时，文本域将自适应内容的高度，而不出现滚动条。</p>
-	<p>
-		<span class="label-info">API：</span>
-		<pre>
-	$('your textarea').TextareaAutoHeight(maxHeight);
-
-	@param -- maxHeight 最大允许的高度，默认：无限制；也可以通过指定元素的 <code>data-maxheight="number"</code> 属性定义。
-		</pre>
-	</p>
-
-	<div>
-		<textarea  cols="50">这里输入敲入多个回车试试，我将无限自适应</textarea>
-		<textarea rows="4" cols="50" data-maxheight="150">我最高只能达到150px，超过150px，将出现滚动条</textarea>
-	</div>
-
- 	<script type="text/javascript">
- 	$('textarea').TextareaAutoHeight();
- 	</script>
+	<section class="main project_topic">
+		<!-- 主体部分-->
+		<div class="content">
+			<video src="http://mpv.videocc.net/c376da5e2a/6/c376da5e2a622169557c783382e4ce66_1.mp4" controls="controls" width="98%" height="200" poster="http://img.videocc.net/uimage/c/c376da5e2a/6/c376da5e2a622169557c783382e4ce66_0.jpg">当前不支持此类视频</video>
+			<div
+							class="project-Details-cont introduce"> <embed id="xunlei_com_thunder_helper_plugin_d462f475-c18e-46be-bd10-327458d045bd" type="application/thunder_download_plugin" height="0" width="0" />
+				<p>想必不少人还记得之前海外新奇介绍的一款木质火车模型，它在组合过程中无需任何粘合剂，完全通过拼插固定。<br/></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498965954550827.jpg" style="" height="" width="" alt="1484620251122989.jpg" /></p>
+				<p> </p>
+				<p>最厉害的是，它还能自己跑起来！这个蒸汽火车模型最值得称赞的地方在于其有着自己可动的机械结构，通过内部的齿轮传动，它以牵引着一节车厢在它的轨道上行驶 5 米，而且不需要任何电池或者燃料，全部动力仅仅来自于一个橡皮筋的机械发条。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498965971220488.gif" style="" height="" width="" alt="1484620354810521.gif" /></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966001147545.gif" style="" height="" width="" alt="1484620363324941.gif" /></p>
+				<p><br/></p>
+				<p>最近，发明了这个自动火车的乌克兰公司 UGEARS 又公布了他们的最新作品——一架手摇风琴，当然了，它也是可以当作真正的乐器拿来演奏的。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966067298914.jpg" style="" height="" width="" alt="e669e497b12ead3cd2904c9edada83a4_original.jpg" /></p>
+				<p><br/></p>
+				<p>手摇风琴（也被人们称作带轮的小提琴）是一种弦乐器，它的原理是通过让一个上了松香的轮子转动去摩擦穿过轮子的几条琴弦来发声。这个轮子是由一个曲柄驱动的，轮子就像小提琴的弓一样，作用是摩擦琴弦。</p>
+				<p><br/></p>
+				<p>手摇风琴据说是历史上出现的第一把弦乐器，也是现在极为普遍的键盘乐器的祖先。在后来的 17 至 18 世纪的文艺复兴时期，它成为了贵族阶级用来娱乐富人的乐器，由有镶嵌和雕刻的工匠们装饰的，并有内置的弹拨机制进入吉他或琴体。有些人把它称为「中世纪摇滚」。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966291759140.jpg" style="" height="" width="" alt="The-Hurdy-Gurdy-Girl-1879.-Jules-Richomme-1818-1903.jpg" /></p>
+				<p><br/></p>
+				<p>如果你点开上面的视频，你会发现它的声音并不陌生，在许多电影中它都出现过。</p>
+				<p> </p>
+				<p>它很容易演奏，只需一只手转动曲柄，将你的节奏放入音乐，然后把琴键推到另一边即可，你会感受到木材与机械结合的独特魅力。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966415260695.jpg" style="" height="" width="" alt="ef0f2be17b6ac26acacf744a037751f7_original.jpg" /></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498967023653575.jpg" style="" height="" width="" alt="1.jpg" /></p>
+				<p><br/></p>
+				<p>在整套套件中，包含精确切割的木板零件（误差小于 0.1mm）和一本详细的拼装说明，你只需要根据这本说明耐心地动手就好了。</p>
+				<p><br/></p>
+				<p>通过自己让一堆毫无生气的零件变成一台可以自己演奏的乐器，这种体验也是 UGEARS 想要带给人们的，还能有助于人们理解体会运动模型组装时的机械原理。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966464982523.jpg" height="" width="" alt="bab11be60fb35791c503e0fd0fe9c1f8_original.jpg" /><br/></p>
+				<p><br/></p>
+				<p>UGEARS 还提供了一件看起来很蒸汽朋克的副赠品，据说这是一件日期导航器，你可以设定一个年份、月，它就会显示出那一天是星期几——很神奇吧？据说原理和行星的运行机制相同。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966536513934.jpg" style="" height="" width="" alt="ead46b5d0d586dda5ec153d6a1a304e9_original.jpg" /></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966546783350.jpg" style="" height="" width="" alt="179f2e2acf5bb424731f098d4cd049c6_original.jpg" /></p>
+				<p><br/></p>
+				<p>除了这台手风琴之外你还可以选购其他「机械城系列」新作，一台有轨电车，一个机械臂铁路操纵者，和一个机器人工厂。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966633449558.jpg" style="" height="" width="" alt="有轨.jpg" /></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966648989509.jpg" style="" height="" width="" alt="机械臂.jpg" /></p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://p.moimg.net/ueditor/image/2017/07/02/1498966661883528.jpg" style="" height="" width="" alt="工厂.jpg" /></p>
+				<p><br/></p>
+				<p>而它们统统都是可以自己运转的哦！下面是 UGEARS 之前的一些作品：</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://u.moimg.net/ueditor/image/2017/01/17/1484620453295348.gif" alt="gif拖拉机.gif" style="" height="" width="" /></p>
+				<p><br/></p>
+				<p>一台能设置三种模式，以不同速度行驶的拖拉机。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://u.moimg.net/ueditor/image/2017/01/17/1484620571131630.gif" alt="gif闹钟.gif" style="" height="" width="" /></p>
+				<p><br/></p>
+				<p>这是一个 20 分钟计时装置，和普通钟表一样它也有着自己的摆锤和杠杆等机械结构，时间一到就会通过发声装置发出声音。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://u.moimg.net/ueditor/image/2017/01/17/1484620602894957.gif" alt="gif名片盒.gif" style="" height="" width="" /></p>
+				<p><br/></p>
+				<p>还有这样非常浮夸的名片盒。</p>
+				<p><br/></p>
+				<p style="text-align: center;"><img src="https://u.moimg.net/ueditor/image/2017/01/17/1484620789942827.gif" alt="gif保险柜.gif" style="" height="" width="" /></p>
+				<p><br/></p>
+				<p>这个保险箱的复杂程度甚至能允许你自己设置它的密码。</p>
+				<p><br/></p>
+				<p>是不是每件都帅的不行？现在手摇风琴的众筹开启仅几天，就已经筹集到近 13 万美元，感兴趣的可以直接去看看 » <a href="https://www.kickstarter.com/projects/978262034/ugears-hurdy-gurdy-unique-mechanical-musical-model?ref=recommended" target="_blank">UGEARS Hurdy-Gurdy 在 Kickstarter</a></p>
+		</div>
+		</div>
+	</section>
 </body>
+<script type="text/javascript">
+	window.onload = function() {
+			var ua = navigator.userAgent;
+			if (ua.match(/iphone/ig)) {
+				var head = document.getElementsByTagName('head')[0];
+				var viewMeta = document.createElement('meta');
+				var deviceWidth = document.body.clientWidth || document.documentElement.clientWidth;
+				var realWidth = deviceWidth - 60;
+				viewMeta.name = "viewport";
+				viewMeta.content = 'width=' + realWidth + ',initial-scale=1.0,maximum-scale=1.0,user-scalable=no'
+				head.appendChild(viewMeta);
+			}
+		} //app 点击变大下载 var images = document.getElementsByTagName('img'); var img_url = []; var default_url = "javascript:this.src='http://s.moimg.net/new/images/default.jpg'"; for(var i=0; i<images.length;i++){ images[i].setAttribute("onerror",default_url); img_url.push(images[i].getAttribute("src")); images[i].index = i; images[i].onclick = function(){ var i = this.index; var jsonObj = {'image_index':i,'image_urls':img_url}; var jsonStr = JSON.stringify(jsonObj); // window.appInterface.onImageClicked(jsonStr); } }
+</script>
 
 </html>

@@ -18,3 +18,14 @@ title	/Users/yunlongzhang/Desktop/regExp/array/demo1.html	/^    <title>打乱数
 body	/Users/yunlongzhang/Desktop/regExp/array/demo1.html	/^<body>$/;"	function	line:9
 script	/Users/yunlongzhang/Desktop/regExp/array/demo1.html	/^    <script>$/;"	function	line:10
 upsetArr	/Users/yunlongzhang/Desktop/regExp/array/demo1.html	/^        function upsetArr(arr){$/;"	function	line:11
+html	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^<html lang="en">$/;"	function	line:2
+head	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^<head>$/;"	function	line:3
+meta	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <meta charset="UTF-8">$/;"	function	line:4
+meta	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <meta name="viewport" content="width=device-width, initial-scale=1.0">$/;"	function	line:5
+meta	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <meta http-equiv="X-UA-Compatible" content="ie=edge">$/;"	function	line:6
+title	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <title>Document<\/title>$/;"	function	line:7
+style	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <style>$/;"	function	line:8
+body	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^<body>$/;"	function	line:20
+div	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <div class="test"><\/div>$/;"	function	line:22
+script	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^    <script>$/;"	function	line:24
+debounce	/Users/yunlongzhang/Desktop/regExp/debounce/demo.html	/^        function debounce(func,wait,immediate){$/;"	function	line:25

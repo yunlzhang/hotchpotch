@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .test{
+            width: 500px;
+            height: 200px;
+            background: #ff0;
+            margin:0 auto;
+            text-align: center;
+            line-height: 200px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="test"></div>
+
+    <script>
+        function debounce(func,wait,immediate){
+            var timeout,result;
+            var debounced = function(){
+                var context = this;
+                var args = arguments;
+                if(timeout) clearTimeout(timeout);
+                if(immediate){
+                    var callNow = !timeout;
+                    timeout = setTimeout(function(){
+                        timeout = null;
+                    },wait)
+                    if(callNow) result = func.apply(context,args);
+                }else{
+                    timeout = setTimeout(function(){
+                        func.apply(context,args);
+                    },wait)
+                }
+                return result;
+            }
+            debounced.cancel = function(){
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            return debounced;
+        }
+        var doSomething = function(){
+            console.log(this)
+            this.innerHTML = this.innerHTML ? +this.innerHTML + 1 : 0;
+        }
+        var de = debounce(doSomething,5000)
+
+        document.querySelectorAll('.test')[0].addEventListener('mousemove',function(){
+            de.call(this)
+        })
+
+    </script>
+</body>
+</html>
