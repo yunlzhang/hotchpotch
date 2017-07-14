@@ -1,0 +1,29 @@
+{
+    "menu": {
+        "button": [
+            {
+                "type": "view",
+                "name": "App下载",
+                "url": "http://a.app.qq.com/o/simple.jsp?pkgname=com.modian.app",
+                "sub_button": [ ]
+            },
+            {
+                "type": "view",
+                "name": "摩点小程序",
+                "url": "http://www.modian.com/?_mdsf=md_wexin_menu",
+                "sub_button": [ ]
+            },
+            {
+                "name": "我的摩点",
+                "sub_button": [
+                    {
+                        "type": "view",
+                        "name": "微打赏",
+                        "url": "http://wds.modian.com/?_mdsf=md_wexin_menu",
+                        "sub_button": [ ]
+                    }
+                ]
+            }
+        ]
+    }
+}
